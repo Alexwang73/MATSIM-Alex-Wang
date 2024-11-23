@@ -23,30 +23,9 @@ public class Workflow {
 
 	public static void main(String[] args) {
 		// Convert Network
-		OsmConverterConfigGroup osmConfig = OsmConverterConfigGroup.loadConfig("osm2matsimConfig.xml");
+		OsmConverterConfigGroup osmConfig = OsmConverterConfigGroup.loadConfig("C:/Users/wangc/IdeaProjects/pt2matsim/src/main/java/org/matsim/pt2matsim/examples/osm_config.xml");
 		Osm2MultimodalNetwork.run(osmConfig); // or just: Osm2MultimodalNetwork.run("osm2matsimConfig.xml");
 
-		// convert schedule
-		String unmappedSchedule = "intermediate/schedule_unmapped.xml.gz";
-		Gtfs2TransitSchedule.run("gtfs", "dayWithMostTrips", osmConfig.getOutputCoordinateSystem(), unmappedSchedule, "output/vehicles.xml.gz");
 
-		// setup public transit mapper
-		PublicTransitMappingConfigGroup mapperConfig = PublicTransitMappingConfigGroup.createDefaultConfig();
-		Network network = NetworkTools.readNetwork(osmConfig.getOutputNetworkFile());
-		TransitSchedule schedule = ScheduleTools.readTransitSchedule(unmappedSchedule);
-
-		// map schedule to network
-		PTMapper.mapScheduleToNetwork(schedule,  network, mapperConfig);
-
-		// write mapping results
-		NetworkTools.writeNetwork(network, "output/network.xml.gz");
-		ScheduleTools.writeTransitSchedule(schedule, "output/schedule.xml.gz");
-
-		// Write geojson result
-		Network2Geojson.run(osmConfig.getOutputCoordinateSystem(), network, "output/network.geojson");
-		Schedule2Geojson.run(osmConfig.getOutputCoordinateSystem(), schedule, "output/schedule.geojson");
-
-		// check schedule
-		CheckMappedSchedulePlausibility.run("output/schedule.xml.gz", "output/network.xml.gz", osmConfig.getOutputCoordinateSystem(), "output/check/");
 	}
 }
