@@ -16,14 +16,14 @@
         <param name="keepWaysWithPublicTransit" value="true" />
         <param name="maxLinkLength" value="500.0" />
         <!-- The path to the osm file. -->
-        <param name="osmFile" value="C:/Users/wangc/Downloads/extracted-area.osm.xml" />
+        <param name="osmFile" value="C:/Users/wangc/Downloads/boston.osm" />
         <!-- Output coordinate system. EPSG:* codes are supported and recommended.
         Use 'WGS84' for no transformation (though this may lead to errors with PT mapping). -->
         <param name="outputCoordinateSystem" value="WGS84" />
         <!-- CSV file containing the full geometry (including start end end node) for each link.
         This file can be used for visualization purposes in Simunto Via or GIS software. -->
-        <param name="outputDetailedLinkGeometryFile" value="C:/Users/wangc/Downloads/extracted-area-detailed.xml" />
-        <param name="outputNetworkFile" value="C:/Users/wangc/Downloads/extracted-area.xml" />
+        <param name="outputDetailedLinkGeometryFile" value="C:/Users/wangc/Downloads/Boston-detailed.xml" />
+        <param name="outputNetworkFile" value="C:/Users/wangc/Downloads/Boston-network.xml" />
         <!-- If true: OSM turn restrictions are parsed and written as disallowedNextLinks attribute to the first link. -->
         <param name="parseTurnRestrictions" value="false" />
         <!-- In case the speed limit allowed does not represent the speed a vehicle can actually realize,
